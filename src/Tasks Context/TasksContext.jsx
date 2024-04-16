@@ -6,6 +6,7 @@ export const TasksContext = createContext();
 // The "TasksContextProvider" is a component which ensures that the data is made available throughout the entire application
 export const TasksContextProvider = ({ children }) => {
   const [tasks, setTasks] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
   const [taskEdit, setTaskEdit] = useState({
     item: {},
     edit: false
@@ -24,8 +25,10 @@ export const TasksContextProvider = ({ children }) => {
       }
       const data = await response.json();
       setTasks([...data]);
+      setIsLoading(false);
     } catch (error) {
       alert(error.message);
+      setIsLoading(false);
     }
   }
 
@@ -82,7 +85,7 @@ export const TasksContextProvider = ({ children }) => {
   };
 
     return (
-        <TasksContext.Provider value={{tasks, sendTask, updateTask, editTask, taskEdit, deleteTask}}>
+        <TasksContext.Provider value={{tasks, sendTask, isLoading, updateTask, editTask, taskEdit, deleteTask}}>
             {children}
         </TasksContext.Provider>
     )

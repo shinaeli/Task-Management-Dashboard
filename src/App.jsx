@@ -7,7 +7,7 @@ import Footer from './components/Footer'
 
 const App = () => {
   // The cretaed "TasksContext" is imported and destructured to get the value of "tasks"
-  const { tasks } = useContext(TasksContext);
+  const { tasks, isLoading } = useContext(TasksContext);
   
   // the default state of "selectedFilter" is set to "all"
   const [selectedFilter, setSelectedFilter] = useState("all");
@@ -32,7 +32,7 @@ const getFiltered = (itemsToFilter, status) => {
       <h2 className='platypi-bold title'>Teachmate Task Management Dashboard</h2>
       <Form />
       <ReminderFilter selectedFilter={selectedFilter} setSelectedFilter={setSelectedFilter} />
-      <RemindersList filteredItems={filteredItems} />
+      {isLoading ? <h2 className="platypi-bold loader">Loading...</h2> : <RemindersList filteredItems={filteredItems} />}
       {(tasks.length === 0) && (<div><h2 className='title'>There is no task at the moment. Create any if needed.</h2></div>)}
       <Footer />
     </div>

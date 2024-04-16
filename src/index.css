@@ -64,7 +64,16 @@ img {
   width: 90%;
   margin: 0px auto 15px auto;
   text-align: center;
+  font-size: 2.5rem;
   color: blueviolet;
+}
+
+.loader {
+  width: 60%;
+  font-size: 1.8rem;
+  text-align: center;
+  margin: 30px auto;
+  color: #f0f;
 }
 
 form {

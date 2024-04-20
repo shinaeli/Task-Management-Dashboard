@@ -9,7 +9,7 @@ const ReminderFilter = ({selectedFilter, setSelectedFilter}) => {
 
   return (
     <div className='filter-container'>
-        <label className="platypi-medium">Show Items Due By Date: </label>
+        <label className="platypi-medium">Show Items Due By Status: </label>
         <select value={selectedFilter} onChange={e => handleChange(e)}>
             <option value="true">Completed</option>
             <option value="false">Pending</option>
